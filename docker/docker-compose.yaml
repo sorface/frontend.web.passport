@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+
+  frontend.web.passport:
+    container_name: "frontend.web.passport"
+
+    build:
+      context: ../
+      dockerfile: docker/proxy/Dockerfile
+      args:
+        - REACT_APP_BACKEND_URL=http://localhost:8080
+        - REACT_APP_VERSION=1.0.0-Docker
+        - NGINX_DOMAIN=localhost
+        - NGINX_SECURITY_BACKEND_URL=http://localhost:8080
+    ports:
+      - "9020:80"

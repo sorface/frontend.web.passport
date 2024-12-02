@@ -1,4 +1,4 @@
-# Passport Frontend
+# Passport Web Frontend
 
 ## Установка зависимостей
 
