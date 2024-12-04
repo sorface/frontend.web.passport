@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {AppRoutes} from './routes/AppRoutes';
 import {REACT_APP_VERSION} from './config';
-import {Menu} from './components/Menu/Menu';
 import {Footer} from "./components/Footer/Footer";
 import {Loader} from './components/Loader/Loader';
 import {AuthContext} from './context/AuthContext';
@@ -54,7 +53,7 @@ function App() {
         <BrowserRouter>
             <AuthContext.Provider value={{ account, loadAccount }}>
                 <div className="App-container" data-testid="App-container">
-                    <Menu/>
+                    {/*<Menu/>*/}
                     <div className="App">
                         <div className="App-content">
                             <AppRoutes/>

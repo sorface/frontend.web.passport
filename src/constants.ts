@@ -29,6 +29,10 @@ export const enum IconThemePostfix {
     Light = '-outline',
 }
 
+export const enum HttpCodes {
+    HTTP_UNAUTHORIZED = 401
+}
+
 export const enum Captions {
     AppTitle = 'sso sorface',
     Loading = 'Loading',
@@ -54,7 +58,7 @@ export const enum Captions {
     Roles = 'Roles',
     LogoAlt = 'logo',
     ContinueWith = 'Continue with',
-    WelcomeToSSO = 'Welcome to SSO Sorface',
+    WelcomeToSSO = 'Sorface Passport',
     ActivateFail = 'Activation Fail',
     ActivateSuccess = 'Activation Success',
     Activating = 'Activating',

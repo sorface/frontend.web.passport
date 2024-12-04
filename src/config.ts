@@ -9,3 +9,5 @@ const getFromEnv = (varName: string) => {
 export const REACT_APP_BACKEND_URL = getFromEnv('REACT_APP_BACKEND_URL');
 
 export const REACT_APP_VERSION = getFromEnv('REACT_APP_VERSION');
+
+export const REDIRECT_PROFILE_PAGE = getFromEnv('REACT_APP_PROFILE_PAGE');

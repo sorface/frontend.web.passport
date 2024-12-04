@@ -13,7 +13,9 @@ export const ProtectedRoute: FunctionComponent<PrivateRouteProps> = ({
   children,
 }) => {
   if (!allowed) {
-    return <Navigate to={redirect} replace />;
+    window.location.href = redirect
+
+    return null;
   }
 
   return children;
