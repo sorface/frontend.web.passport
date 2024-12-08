@@ -77,8 +77,8 @@ export const SignIn: FunctionComponent = () => {
             return;
         }
         fetchData({
-            password: requestBody.username,
-            username: requestBody.password,
+            username: requestBody.username,
+            password: requestBody.password,
         });
     };
 
