@@ -23,7 +23,7 @@ export interface FormProps {
     error?: string | null;
     submitCaption?: string;
     children?: ReactNode;
-    onSubmit?: (formData: FormData) => void;
+    onSubmit: (formData: FormData) => void;
 }
 
 export const Form: FunctionComponent<FormProps> = ({
@@ -58,17 +58,9 @@ export const Form: FunctionComponent<FormProps> = ({
     }, [csrfConfig]);
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        if (onSubmit) {
-            event.preventDefault();
-            const formData = new FormData(event.target as HTMLFormElement);
-            onSubmit(formData);
-            return;
-        }
-        if (skipCsrf) {
-            return true;
-        }
         event.preventDefault();
-        loadCsrfConfig();
+        const formData = new FormData(event.target as HTMLFormElement);
+        onSubmit(formData);
     };
 
     return (

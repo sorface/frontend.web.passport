@@ -23,6 +23,7 @@ export const LogoutForm: FunctionComponent<LogoutFormProps> = ({
       fieldErrors={{ '': '' }}
       submitCaption={submitCaption ?? Captions.Logout}
       children={children}
+      onSubmit={() => {}}
     />
   );
 };

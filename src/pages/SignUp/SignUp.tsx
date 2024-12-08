@@ -46,6 +46,7 @@ export const SignUp: FunctionComponent = () => {
                     fields={fields}
                     fieldErrors={{}}
                     submitCaption={Captions.SignUp}
+                    onSubmit={() => {}}
                 >
                     <Link to={pathnames.signIn}>{Captions.SignInLink}</Link>
                 </Form>

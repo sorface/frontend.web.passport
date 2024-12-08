@@ -1,5 +1,10 @@
 import {ApiContractDelete, ApiContractGet, ApiContractPatch, ApiContractPost, ApiEndpoint} from './types/apiContracts';
 
+export interface SignInBody {
+    username: string;
+	password: string;
+};
+
 export type SignUpBody = Record<string, FormDataEntryValue>;
 
 export interface ConfirmBody {
@@ -72,6 +77,11 @@ export interface EditAccountBody {
 }
 
 export const accountsApiDeclaration = {
+    signin: (body: SignInBody): ApiContractPost => ({
+        method: 'POST',
+        baseUrl: ApiEndpoint.AccountsSignin,
+        body,
+    }),
     signup: (body: SignUpBody): ApiContractPost => ({
         method: 'POST',
         baseUrl: ApiEndpoint.AccountsSignup,
