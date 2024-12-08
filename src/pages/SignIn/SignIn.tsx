@@ -10,6 +10,9 @@ import { useQueryFromErrors } from '../../hooks/useQueryFromErrors';
 import { ApiEndpoint } from '../../types/apiContracts';
 import { REACT_APP_BACKEND_URL } from "../../config";
 import { PageLogo } from '../../components/PageLogo/PageLogo';
+import { convertFormDataToObject } from '../../utils/convertFormDataToObject';
+import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
+import { accountsApiDeclaration, SignInBody } from '../../apiDeclarations';
 
 import './SignIn.css';
 
@@ -32,6 +35,8 @@ const emailFields: Field[] = [
 export const SignIn: FunctionComponent = () => {
     const [withEmail, setWithEmail] = useState(false);
     const { queryFromErrors } = useQueryFromErrors();
+    const { apiMethodState, fetchData } = useApiMethodCsrf<unknown, SignInBody>(accountsApiDeclaration.signin);
+    const { process: { error }, data } = apiMethodState;
 
     const signinItems = [
         {
@@ -62,6 +67,21 @@ export const SignIn: FunctionComponent = () => {
         },
     ];
 
+    const handleSignIn = (formData: FormData) => {
+        const requestBody = convertFormDataToObject(formData);
+        if (
+            typeof requestBody.username !== 'string' ||
+            typeof requestBody.password !== 'string'
+        ) {
+            console.warn('Invalid sign body data');
+            return;
+        }
+        fetchData({
+            username: requestBody.username,
+            password: requestBody.password,
+        });
+    };
+
     return (
         <div className='page-sign'>
             <div className='page-sign-header'>
@@ -89,6 +109,7 @@ export const SignIn: FunctionComponent = () => {
                                         fields={signinItem.fields}
                                         fieldErrors={queryFromErrors}
                                         submitCaption={Captions.SignIn}
+                                        onSubmit={handleSignIn}
                                     />
                                     {/*<Link className="signUp-link" to={pathnames.signUp}>{Captions.SignUpLink}</Link>*/}
                                 </>
