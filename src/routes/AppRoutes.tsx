@@ -4,6 +4,7 @@ import {AuthContext} from '../context/AuthContext';
 import {pathnames} from '../constants';
 import {NotFound} from '../pages/NotFound/NotFound';
 import {SignIn} from '../pages/SignIn/SignIn';
+import {SignUp} from '../pages/SignUp/SignUp';
 import {Activate} from '../pages/Activate/Activate';
 import {ProtectedRoute} from './ProtectedRoute';
 import {Failure} from "../pages/Failure/Failure";
@@ -25,7 +26,12 @@ export const AppRoutes: FunctionComponent = () => {
 
     return (
         <Routes>
-            <Route path="*" element={
+            <Route path={pathnames.signUp} element={
+                <ProtectedRoute {...notAuthenticatedRouteProps}>
+                    <SignUp/>
+                </ProtectedRoute>
+            }/>
+            <Route path={pathnames.signIn} element={
                 <ProtectedRoute {...notAuthenticatedRouteProps}>
                     <SignIn/>
                 </ProtectedRoute>

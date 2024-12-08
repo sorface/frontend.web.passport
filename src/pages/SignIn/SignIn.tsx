@@ -1,5 +1,5 @@
 import React, { Fragment, FunctionComponent, MouseEvent, useState } from 'react';
-import { Captions } from '../../constants';
+import { Captions, pathnames } from '../../constants';
 import { Field, Form } from '../../components/Form/Form';
 import githubLogo from './img/github.svg';
 import yandexLogo from './img/yandex.svg';
@@ -13,6 +13,7 @@ import { PageLogo } from '../../components/PageLogo/PageLogo';
 import { convertFormDataToObject } from '../../utils/convertFormDataToObject';
 import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
 import { accountsApiDeclaration, SignInBody } from '../../apiDeclarations';
+import { Link } from 'react-router-dom';
 
 import './SignIn.css';
 
@@ -111,7 +112,7 @@ export const SignIn: FunctionComponent = () => {
                                         submitCaption={Captions.SignIn}
                                         onSubmit={handleSignIn}
                                     />
-                                    {/*<Link className="signUp-link" to={pathnames.signUp}>{Captions.SignUpLink}</Link>*/}
+                                    <Link className="signUp-link" to={pathnames.signUp}>{Captions.SignUpLink}</Link>
                                 </>
                             ) : (
                                 <a
