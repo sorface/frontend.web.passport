@@ -57,7 +57,7 @@ export const SignUp: FunctionComponent = () => {
             typeof requestBody.firstname !== 'string' ||
             typeof requestBody.lastname !== 'string'
         ) {
-            console.warn('Invalid sign body data');
+            console.warn('Invalid sign up body data');
             return;
         }
         fetchData({
