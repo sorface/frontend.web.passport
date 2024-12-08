@@ -1,8 +1,9 @@
 export const pathnames = {
     account: '/account',
     session: '/account/sessions',
-    signUp: '/account/signup',
-    signIn: '/account/signin',
+    signUp: '/signup',
+    signIn: '/',
+    signUpConfirm: '/signup/confirm',
     failure: '/failure',
     activate: '/account/activate',
     clients: '/clients',

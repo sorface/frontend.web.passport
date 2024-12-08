@@ -1,11 +1,17 @@
-import {ApiContractDelete, ApiContractGet, ApiContractPatch, ApiContractPost, ApiEndpoint} from './types/apiContracts';
+import { ApiContractDelete, ApiContractGet, ApiContractPatch, ApiContractPost, ApiEndpoint } from './types/apiContracts';
 
 export interface SignInBody {
     username: string;
-	password: string;
+    password: string;
 };
 
-export type SignUpBody = Record<string, FormDataEntryValue>;
+export interface SignUpBody {
+    email: string;
+    username: string;
+    password: string;
+    firstname: string;
+    lastname: string;
+};
 
 export interface ConfirmBody {
     token: string;
