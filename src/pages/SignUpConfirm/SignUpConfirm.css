@@ -1,0 +1,33 @@
+.sign-up-confirm .form {
+  width: fit-content;
+}
+
+.sign-up-confirm h2 {
+  margin-bottom: 1.5rem;
+}
+
+.sign-up-confirm .sign-up-confirm-enter-message {
+  padding-bottom: 1.75rem;
+}
+
+.sign-up-confirm .sign-up-confirm-otp-container {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.sign-up-confirm-otp-container .otp-input {
+  margin-right: 1rem;
+}
+
+.sign-up-confirm-otp-container .otp-input:last-child {
+  margin-right: 0;
+}
+
+.sign-up-confirm .sign-up-confirm-otp-info-messages {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-confirm .sign-up-confirm-otp-info-error {
+  color: var(--error);
+}

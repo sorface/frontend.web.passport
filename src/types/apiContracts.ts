@@ -7,7 +7,7 @@ export enum ApiEndpoint {
     AccountsSignup = '/api/accounts/signup',
     AccountsSignin = '/api/accounts/signin',
     AccountsCurrent = '/api/accounts/current',
-    AccountsConfirm = '/api/account/confirm',
+    AccountsConfirm = '/api/accounts/confirm',
     AccountsEdit = '/api/accounts/:id',
     AccountsLogout = '/api/accounts/logout',
     CurrentSession = '/api/sessions',
