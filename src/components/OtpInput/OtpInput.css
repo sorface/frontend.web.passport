@@ -4,11 +4,20 @@ input.otp-input {
   padding: 0.25rem;
   border: 1px solid var(--border);
   text-align: center;
+  outline: none;
   -moz-appearance: textfield;
+}
+
+input.otp-input:focus {
+  box-shadow: 0 0 0 2px rgb(from var(--grey2) r g b / 0.3);
 }
 
 input.otp-input-error {
   border-color: var(--error);
+}
+
+input.otp-input-error:focus {
+  box-shadow: 0 0 0 2px rgb(from var(--error) r g b / 0.3);
 }
 
 input.otp-input::-webkit-outer-spin-button,

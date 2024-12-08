@@ -1,21 +1,34 @@
-import { FunctionComponent, useEffect, useRef, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormWrapper } from '../../components/Form/FormWrapper';
 import { OTPInput } from '../../components/OtpInput/OtpInput';
 import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
 import { accountsApiDeclaration, ConfirmBody } from '../../apiDeclarations';
 import { pathnames } from '../../constants';
+import { Timer } from '../../components/Timer/Timer';
 
 import './SignUpConfirm.css';
 
 const optLength = 6;
 
+const otpExpiredTimeLocalStorageKey = 'otpExpiredTime';
+
 export const SignUpConfirm: FunctionComponent = () => {
   const navigate = useNavigate();
   const [otpValue, setOtpValue] = useState('');
   const [showError, setShowError] = useState(false);
+  const [otpExpired, setOtpExpired] = useState<Date | null>(null);
   const { apiMethodState, fetchData } = useApiMethodCsrf<unknown, ConfirmBody>(accountsApiDeclaration.confirm);
   const { process: { error }, data } = apiMethodState;
+
+  useEffect(() => {
+    const otpExpiredTime = localStorage.getItem(otpExpiredTimeLocalStorageKey);
+    if (!otpExpiredTime) {
+      throw new Error('TODO: Handle this error');
+    }
+    const otpExpiredTimeDate = new Date(otpExpiredTime);
+    setOtpExpired(otpExpiredTimeDate);
+  }, []);
 
   useEffect(() => {
     if (otpValue.length === optLength) {
@@ -55,10 +68,14 @@ export const SignUpConfirm: FunctionComponent = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-
+        <div className='sign-up-confirm-otp-info-messages'>
+          {(!!otpExpired && !showError) && (
+            <Timer
+              endDate={otpExpired}
+            />
+          )}
+          {(error && showError) && <div className='sign-up-confirm-otp-info-error'>Invalid token</div>}
         </div>
-        {(error && showError) && <div>Invalid token</div>}
       </FormWrapper>
     </div>
   );

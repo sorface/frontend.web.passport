@@ -22,3 +22,12 @@
 .sign-up-confirm-otp-container .otp-input:last-child {
   margin-right: 0;
 }
+
+.sign-up-confirm .sign-up-confirm-otp-info-messages {
+  display: flex;
+  justify-content: center;
+}
+
+.sign-up-confirm .sign-up-confirm-otp-info-error {
+  color: var(--error);
+}
