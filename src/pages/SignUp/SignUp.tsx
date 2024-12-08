@@ -44,7 +44,7 @@ export const SignUp: FunctionComponent = () => {
     const { apiMethodState, fetchData } = useApiMethodCsrf<unknown, SignUpBody>(accountsApiDeclaration.signup);
     const { process: { error }, data } = apiMethodState;
 
-    if (data || error) {
+    if (data) {
         navigate(pathnames.signUpConfirm);
     }
 
