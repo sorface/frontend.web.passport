@@ -21,7 +21,7 @@ export const Activate: FunctionComponent = () => {
     if (!tokenParam) {
       return;
     }
-    fetchData({ token: tokenParam });
+    fetchData({ code: tokenParam });
   }, [tokenParam, fetchData]);
 
   useEffect(() => {

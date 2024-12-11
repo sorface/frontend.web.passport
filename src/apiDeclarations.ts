@@ -14,7 +14,7 @@ export interface SignUpBody {
 };
 
 export interface ConfirmBody {
-    token: string;
+    code: string;
 }
 
 export const csrfApiDeclaration = {
