@@ -84,3 +84,5 @@ export const enum Captions {
     NewExpiredSecret = 'New expired secret',
     ClientSecretLabel = 'Client Secret'
 }
+
+export const otpExpiredTimeLocalStorageKey = 'otpExpiredTime';

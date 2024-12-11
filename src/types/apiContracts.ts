@@ -11,6 +11,7 @@ export enum ApiEndpoint {
     AccountsEdit = '/api/accounts/:id',
     AccountsLogout = '/api/accounts/logout',
     CurrentSession = '/api/sessions',
+    OtpResend = '/api/accounts/otp',
 }
 
 export interface ApiContractGet {
@@ -30,7 +31,7 @@ export interface ApiContractPut {
     method: 'PUT';
     baseUrl: ApiEndpoint;
     urlParams?: object;
-    body: any;
+    body?: any;
 }
 
 export interface ApiContractPatch {

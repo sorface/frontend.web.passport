@@ -4,20 +4,21 @@ import { FormWrapper } from '../../components/Form/FormWrapper';
 import { OTPInput } from '../../components/OtpInput/OtpInput';
 import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
 import { accountsApiDeclaration, ConfirmBody } from '../../apiDeclarations';
-import { pathnames } from '../../constants';
+import { otpExpiredTimeLocalStorageKey, pathnames } from '../../constants';
 import { Timer } from '../../components/Timer/Timer';
+import { useRemainingTime } from '../../hooks/useRemainingTime';
+import { OtpResend } from '../../components/OtpResend/OtpResend';
 
 import './SignUpConfirm.css';
 
 const optLength = 6;
-
-const otpExpiredTimeLocalStorageKey = 'otpExpiredTime';
 
 export const SignUpConfirm: FunctionComponent = () => {
   const navigate = useNavigate();
   const [otpValue, setOtpValue] = useState('');
   const [showError, setShowError] = useState(false);
   const [otpExpired, setOtpExpired] = useState<Date | null>(null);
+  const { remainingTimeMs } = useRemainingTime(otpExpired);
   const { apiMethodState, fetchData } = useApiMethodCsrf<unknown, ConfirmBody>(accountsApiDeclaration.confirm);
   const { process: { error }, data } = apiMethodState;
 
@@ -34,14 +35,14 @@ export const SignUpConfirm: FunctionComponent = () => {
     if (otpValue.length === optLength) {
       fetchData({ code: otpValue });
     }
-  }, [otpValue]);
+  }, [otpValue, fetchData]);
 
   useEffect(() => {
     if (!data) {
       return;
     }
     navigate(pathnames.signIn);
-  }, [data]);
+  }, [data, navigate]);
 
   useEffect(() => {
     if (!error) {
@@ -71,10 +72,15 @@ export const SignUpConfirm: FunctionComponent = () => {
         <div className='sign-up-confirm-otp-info-messages'>
           {(!!otpExpired && !showError) && (
             <Timer
-              endDate={otpExpired}
+              remainingTimeMs={remainingTimeMs}
             />
           )}
           {(error && showError) && <div className='sign-up-confirm-otp-info-error'>Invalid token</div>}
+        </div>
+        <div className='sign-up-confirm-otp-info-messages'>
+          {remainingTimeMs <= 0 && (
+            <OtpResend />
+          )}
         </div>
       </FormWrapper>
     </div>
