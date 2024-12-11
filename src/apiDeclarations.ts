@@ -1,4 +1,4 @@
-import { ApiContractDelete, ApiContractGet, ApiContractPatch, ApiContractPost, ApiEndpoint } from './types/apiContracts';
+import { ApiContractDelete, ApiContractGet, ApiContractPatch, ApiContractPost, ApiContractPut, ApiEndpoint } from './types/apiContracts';
 
 export interface SignInBody {
     username: string;
@@ -119,4 +119,12 @@ export const accountsApiDeclaration = {
         baseUrl: ApiEndpoint.AccountsLogout,
         body: ''
     })
+};
+
+
+export const optApiDeclaration = {
+    resend: (): ApiContractPut => ({
+        method: 'PUT',
+        baseUrl: ApiEndpoint.OtpResend,
+    }),
 };

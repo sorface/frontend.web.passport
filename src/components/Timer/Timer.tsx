@@ -1,7 +1,5 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent } from 'react';
 import { padTime } from '../../utils/padTime';
-
-const updateIntervalMs = 1000;
 
 const formatTime = (timeMs: number) => {
   const minutes = Math.floor((timeMs / 1000 / 60));
@@ -10,26 +8,12 @@ const formatTime = (timeMs: number) => {
 };
 
 interface RoomTimerProps {
-  endDate: Date;
+  remainingTimeMs: number;
 }
 
 export const Timer: FunctionComponent<RoomTimerProps> = ({
-  endDate,
+  remainingTimeMs,
 }) => {
-  const [remainingTimeMs, setRemainingTimeMs] = useState(0);
-
-  useEffect(() => {
-    const updateTimer = () => {
-      setRemainingTimeMs(endDate.getTime() - Date.now());
-    };
-    updateTimer();
-    const intervalId = setInterval(updateTimer, updateIntervalMs);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
   return (
     <div className="">
       <div className="">
