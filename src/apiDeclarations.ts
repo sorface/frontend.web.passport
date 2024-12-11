@@ -13,6 +13,10 @@ export interface SignUpBody {
     lastname: string;
 };
 
+export interface SignUpResponse {
+    otpExpiredTime: string;
+};
+
 export interface ConfirmBody {
     code: string;
 }

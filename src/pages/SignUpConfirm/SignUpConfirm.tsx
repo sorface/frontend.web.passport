@@ -4,7 +4,7 @@ import { FormWrapper } from '../../components/Form/FormWrapper';
 import { OTPInput } from '../../components/OtpInput/OtpInput';
 import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
 import { accountsApiDeclaration, ConfirmBody } from '../../apiDeclarations';
-import { pathnames } from '../../constants';
+import { otpExpiredTimeLocalStorageKey, pathnames } from '../../constants';
 import { Timer } from '../../components/Timer/Timer';
 import { useRemainingTime } from '../../hooks/useRemainingTime';
 import { OtpResend } from '../../components/OtpResend/OtpResend';
@@ -12,8 +12,6 @@ import { OtpResend } from '../../components/OtpResend/OtpResend';
 import './SignUpConfirm.css';
 
 const optLength = 6;
-
-const otpExpiredTimeLocalStorageKey = 'otpExpiredTime';
 
 export const SignUpConfirm: FunctionComponent = () => {
   const navigate = useNavigate();
