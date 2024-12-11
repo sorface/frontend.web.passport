@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Captions, pathnames } from '../../constants';
+import { Captions, otpExpiredTimeLocalStorageKey, pathnames } from '../../constants';
 import { Field, Form } from '../../components/Form/Form';
 import { FormWrapper } from '../../components/Form/FormWrapper';
 import { ApiEndpoint } from '../../types/apiContracts';
 import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
-import { accountsApiDeclaration, SignUpBody } from '../../apiDeclarations';
+import { accountsApiDeclaration, SignUpBody, SignUpResponse } from '../../apiDeclarations';
 import { convertFormDataToObject } from '../../utils/convertFormDataToObject';
 
 const fields: Field[] = [
@@ -41,10 +41,11 @@ const fields: Field[] = [
 
 export const SignUp: FunctionComponent = () => {
     const navigate = useNavigate();
-    const { apiMethodState, fetchData } = useApiMethodCsrf<unknown, SignUpBody>(accountsApiDeclaration.signup);
+    const { apiMethodState, fetchData } = useApiMethodCsrf<SignUpResponse, SignUpBody>(accountsApiDeclaration.signup);
     const { process: { error }, data } = apiMethodState;
 
     if (data) {
+        localStorage.setItem(otpExpiredTimeLocalStorageKey, data.otpExpiredTime);
         navigate(pathnames.signUpConfirm);
     }
 
@@ -83,6 +84,7 @@ export const SignUp: FunctionComponent = () => {
                     <Link to={pathnames.signIn}>{Captions.SignInLink}</Link>
                 </Form>
             </FormWrapper>
+            {error && <div>Error: {error}</div>}
         </div>
     );
 };
