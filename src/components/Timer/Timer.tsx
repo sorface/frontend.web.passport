@@ -15,10 +15,8 @@ export const Timer: FunctionComponent<RoomTimerProps> = ({
   remainingTimeMs,
 }) => {
   return (
-    <div className="">
-      <div className="">
-        {formatTime(remainingTimeMs <= 0 ? 0 : remainingTimeMs)}
-      </div>
+    <div className='timer'>
+      {formatTime(remainingTimeMs <= 0 ? 0 : remainingTimeMs)}
     </div>
   );
 };

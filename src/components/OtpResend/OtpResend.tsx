@@ -1,24 +1,37 @@
 import { FunctionComponent } from 'react';
 import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
-import { optApiDeclaration } from '../../apiDeclarations';
+import { optApiDeclaration, OtpResendResponse } from '../../apiDeclarations';
 import { Loader } from '../Loader/Loader';
 
-export const OtpResend: FunctionComponent = () => {
-  const { apiMethodState, fetchData } = useApiMethodCsrf<unknown, undefined>(optApiDeclaration.resend);
-  const { process: { loading } } = apiMethodState;
+import './OtpResend.css';
+
+interface OtpResendProps {
+  onOtpExpiredTimeUpdate: (otpExpiredTime: string) => void;
+}
+
+export const OtpResend: FunctionComponent<OtpResendProps> = ({ onOtpExpiredTimeUpdate }) => {
+  const { apiMethodState, fetchData } = useApiMethodCsrf<OtpResendResponse, undefined>(optApiDeclaration.resend);
+  const { process: { loading }, data } = apiMethodState;
 
   const handleResend = () => {
     fetchData(undefined);
   };
 
   return (
-    <div>
-      {loading && (
+    <div className='otp-resend'>
+      {loading ? (
         <div>
           <Loader />
         </div>
+      ) : (
+        <a
+          role='button'
+          className='otp-resend-button'
+          onClick={handleResend}
+        >
+          Resend
+        </a>
       )}
-      <button onClick={handleResend} className=''>Resend</button>
     </div>
   )
 };

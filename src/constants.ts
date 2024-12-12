@@ -31,7 +31,8 @@ export const enum IconThemePostfix {
 }
 
 export const enum HttpCodes {
-    HTTP_UNAUTHORIZED = 401
+    HTTP_UNAUTHORIZED = 401,
+    HTTP_FOUND = 302,
 }
 
 export const enum Captions {
@@ -82,7 +83,8 @@ export const enum Captions {
     RenewSecret = 'Renew secret',
     NewSecret = 'New secret',
     NewExpiredSecret = 'New expired secret',
-    ClientSecretLabel = 'Client Secret'
+    ClientSecretLabel = 'Client Secret',
+    Back = 'Back',
 }
 
 export const otpExpiredTimeLocalStorageKey = 'otpExpiredTime';

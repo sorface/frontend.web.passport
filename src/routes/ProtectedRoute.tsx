@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactElement } from 'react';
-import { RouteProps, Navigate } from 'react-router-dom';
+import { RouteProps } from 'react-router-dom';
 
 type PrivateRouteProps = RouteProps & {
   allowed: boolean;

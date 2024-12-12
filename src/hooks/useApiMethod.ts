@@ -1,6 +1,7 @@
 import { useCallback, useReducer } from 'react';
 import { REACT_APP_BACKEND_URL } from '../config';
 import { ApiContract } from '../types/apiContracts';
+import { HttpCodes } from '../constants';
 
 export interface ApiMethodState<ResponseData = any> {
     process: {
@@ -101,6 +102,7 @@ const createFetchRequestInit = (apiContract: ApiContract): RequestInit => {
     const defaultRequestInit: RequestInit = {
         credentials: 'include',
         method: apiContract.method,
+        redirect: 'manual',
     };
 
     if (apiContract.method === 'GET') {
@@ -154,6 +156,9 @@ export const useApiMethod = <ResponseData, RequestData = AnyObject>(apiContractC
                 createFetchUrl(apiContract, additionalUrlParams),
                 createFetchRequestInit(apiContract),
             );
+            if (response.status === HttpCodes.HTTP_FOUND) {
+                window.location.href = response.headers.get('location') || '';
+            }
             dispatch({
                 name: 'setCode',
                 payload: response.status,

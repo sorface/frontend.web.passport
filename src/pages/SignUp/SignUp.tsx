@@ -8,6 +8,8 @@ import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
 import { accountsApiDeclaration, SignUpBody, SignUpResponse } from '../../apiDeclarations';
 import { convertFormDataToObject } from '../../utils/convertFormDataToObject';
 
+import './SignUp.css';
+
 const fields: Field[] = [
     {
         name: 'username',
@@ -71,8 +73,15 @@ export const SignUp: FunctionComponent = () => {
     };
 
     return (
-        <div>
+        <div className='signup'>
             <FormWrapper>
+                <h2>{Captions.WelcomeToSSO}</h2>
+                <Link
+                    to={pathnames.signIn}
+                    className='signup-back'
+                >
+                    {Captions.Back}
+                </Link>
                 <Form
                     htmlMethod='POST'
                     htmlAction={ApiEndpoint.AccountsSignup}
@@ -80,9 +89,7 @@ export const SignUp: FunctionComponent = () => {
                     fieldErrors={{}}
                     submitCaption={Captions.SignUp}
                     onSubmit={handleSignUpSubmit}
-                >
-                    <Link to={pathnames.signIn}>{Captions.SignInLink}</Link>
-                </Form>
+                />
             </FormWrapper>
             {error && <div>Error: {error}</div>}
         </div>

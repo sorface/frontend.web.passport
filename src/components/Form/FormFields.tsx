@@ -18,7 +18,7 @@ export const FormFields: FunctionComponent<FormFieldsProps> = ({
         <>
             {fields.map(field => (
                 <div key={field.name} className='form-field-wrapper'>
-                    <label htmlFor={field.name}>{field.placeholder}:</label>
+                    <label htmlFor={field.name}>{field.placeholder}</label>
                     <input id={field.name} {...field} />
                     {!!fieldErrors[field.name] && (
                         <div className='form-field-error'>

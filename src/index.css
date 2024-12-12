@@ -16,6 +16,7 @@
     --button-border-color: var(--grey2);
     --button-hover-color: #4096FF;
     --button-bg: #FFF;
+    --button-bg-primary: #0666E2;
     --list-border-color: #444;
     --active-nav-tab: #424242;
     --border-radius: 0.5rem;

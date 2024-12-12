@@ -42,11 +42,11 @@
 .form label {
     display: block;
     color: var(--list-border-color);
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     text-align: left;
     font-weight: bold;
     margin-left: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.5rem;
 }
 
 .form input {
@@ -57,9 +57,11 @@
     color: var(--text);
     background-color: var(--button-bg);
     border: 1px solid var(--button-border-color);
-    border-radius: var(--border-radius);
+    border-radius: 2rem;
 }
 
 .form input[type="submit"] {
     margin-top: 1rem;
+    color: var(--white);
+    background-color: var(--button-bg-primary);
 }

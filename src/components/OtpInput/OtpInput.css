@@ -6,9 +6,11 @@ input.otp-input {
   text-align: center;
   outline: none;
   -moz-appearance: textfield;
+  transition: 0.3s;
 }
 
 input.otp-input:focus {
+  border-color: var(--grey3);
   box-shadow: 0 0 0 2px rgb(from var(--grey2) r g b / 0.3);
 }
 
@@ -17,6 +19,7 @@ input.otp-input-error {
 }
 
 input.otp-input-error:focus {
+  border-color: var(--error);
   box-shadow: 0 0 0 2px rgb(from var(--error) r g b / 0.3);
 }
 

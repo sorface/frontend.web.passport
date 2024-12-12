@@ -125,6 +125,9 @@ export const accountsApiDeclaration = {
     })
 };
 
+export interface OtpResendResponse {
+    otpExpiredTime: string;
+};
 
 export const optApiDeclaration = {
     resend: (): ApiContractPut => ({

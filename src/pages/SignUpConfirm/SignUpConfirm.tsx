@@ -56,30 +56,50 @@ export const SignUpConfirm: FunctionComponent = () => {
     setOtpValue(otp);
   };
 
+  const handleOtpExpiredTimeUpdate = (otpExpiredTime: string) => {
+    setOtpExpired(new Date(otpExpiredTime));
+  };
+
   return (
     <div className='sign-up-confirm'>
       <FormWrapper>
         <h2>OTP Verification</h2>
-        <div className='sign-up-confirm-enter-message'>Enter the OTP you received</div>
-        <div className='sign-up-confirm-otp-container'>
-          <OTPInput
-            length={optLength}
-            value={otpValue}
-            error={showError}
-            onChange={handleChange}
-          />
-        </div>
-        <div className='sign-up-confirm-otp-info-messages'>
-          {(!!otpExpired && !showError) && (
-            <Timer
-              remainingTimeMs={remainingTimeMs}
+        <div className='sign-up-confirm-enter-message'>Enter the OTP you received by email</div>
+        <div className='sign-up-confirm-otp-container-wrapper'>
+          <div className='sign-up-confirm-otp-container'>
+            <OTPInput
+              length={optLength}
+              value={otpValue}
+              error={showError}
+              onChange={handleChange}
             />
-          )}
+          </div>
+          <div className='sign-up-confirm-otp-info-messages'>
           {(error && showError) && <div className='sign-up-confirm-otp-info-error'>Invalid token</div>}
         </div>
+        </div>
+        
         <div className='sign-up-confirm-otp-info-messages'>
-          {remainingTimeMs <= 0 && (
-            <OtpResend />
+          <div className='sign-up-confirm-otp-receive-message'>Didn't receive the code?{' '}</div>
+          <OtpResend
+            onOtpExpiredTimeUpdate={handleOtpExpiredTimeUpdate}
+          />
+          {(!!otpExpired) && (
+            <div>
+              {remainingTimeMs > 0 ? (
+                <>
+                  <div className='sign-up-confirm-timer-wrapper'>
+                    <span>{'('}</span>
+                    <Timer
+                      remainingTimeMs={remainingTimeMs}
+                    />
+                    <span>{')'}</span>
+                  </div>
+                </>
+              ) : (
+                <div className='sign-up-confirm-time-expired'>Code expired</div>
+              )}
+            </div>
           )}
         </div>
       </FormWrapper>
