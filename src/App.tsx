@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import {AppRoutes} from './routes/AppRoutes';
-import {REACT_APP_VERSION} from './config';
+import {REACT_APP_BUILD_HASH} from './config';
 import {Footer} from "./components/Footer/Footer";
 import {Loader} from './components/Loader/Loader';
 import {AuthContext} from './context/AuthContext';
@@ -58,7 +58,7 @@ function App() {
                         <div className="App-content">
                             <AppRoutes/>
                         </div>
-                        <Footer version={REACT_APP_VERSION}/>
+                        <Footer version={REACT_APP_BUILD_HASH}/>
                     </div>
                 </div>
             </AuthContext.Provider>
