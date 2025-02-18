@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement } from 'react';
+import { FunctionComponent, ReactElement } from 'react';
 import { RouteProps } from 'react-router-dom';
 
 type PrivateRouteProps = RouteProps & {

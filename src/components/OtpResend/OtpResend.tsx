@@ -9,7 +9,7 @@ interface OtpResendProps {
   onOtpExpiredTimeUpdate: (otpExpiredTime: string) => void;
 }
 
-export const OtpResend: FunctionComponent<OtpResendProps> = ({ onOtpExpiredTimeUpdate }) => {
+export const OtpResend: FunctionComponent<OtpResendProps> = () => {
   const { apiMethodState, fetchData } = useApiMethodCsrf<OtpResendResponse, undefined>(optApiDeclaration.resend);
   const { process: { loading }, data } = apiMethodState;
 

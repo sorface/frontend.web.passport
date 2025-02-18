@@ -1,19 +1,19 @@
-import React, { Fragment, FunctionComponent, MouseEvent, useState } from 'react';
-import { Captions, pathnames } from '../../constants';
-import { Field, Form } from '../../components/Form/Form';
+import React, {Fragment, FunctionComponent, MouseEvent, useState} from 'react';
+import {Captions, pathnames} from '../../constants';
+import {Field, Form} from '../../components/Form/Form';
 import githubLogo from './img/github.svg';
 import yandexLogo from './img/yandex.svg';
 import twitchLogo from './img/twitch.svg';
 import emailLogo from './img/email-svgrepo-com.svg';
-import { FormWrapper } from '../../components/Form/FormWrapper';
-import { useQueryFromErrors } from '../../hooks/useQueryFromErrors';
-import { ApiEndpoint } from '../../types/apiContracts';
-import { REACT_APP_BACKEND_URL } from "../../config";
-import { PageLogo } from '../../components/PageLogo/PageLogo';
-import { convertFormDataToObject } from '../../utils/convertFormDataToObject';
-import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
-import { accountsApiDeclaration, SignInBody } from '../../apiDeclarations';
-import { Link } from 'react-router-dom';
+import {FormWrapper} from '../../components/Form/FormWrapper';
+import {useQueryFromErrors} from '../../hooks/useQueryFromErrors';
+import {ApiEndpoint} from '../../types/apiContracts';
+import {REACT_APP_BACKEND_URL} from "../../config";
+import {PageLogo} from '../../components/PageLogo/PageLogo';
+import {convertFormDataToObject} from '../../utils/convertFormDataToObject';
+import {useApiMethodCsrf} from '../../hooks/useApiMethodCsrf';
+import {accountsApiDeclaration, SignInBody} from '../../apiDeclarations';
+import {Link} from 'react-router-dom';
 
 import './SignIn.css';
 
@@ -35,9 +35,8 @@ const emailFields: Field[] = [
 
 export const SignIn: FunctionComponent = () => {
     const [withEmail, setWithEmail] = useState(false);
-    const { queryFromErrors } = useQueryFromErrors();
-    const { apiMethodState, fetchData } = useApiMethodCsrf<unknown, SignInBody>(accountsApiDeclaration.signin);
-    const { process: { error }, data } = apiMethodState;
+    const {queryFromErrors} = useQueryFromErrors();
+    const {apiMethodState, fetchData} = useApiMethodCsrf<unknown, SignInBody>(accountsApiDeclaration.signin);
 
     const signinItems = [
         {
@@ -86,7 +85,7 @@ export const SignIn: FunctionComponent = () => {
     return (
         <div className='page-sign'>
             <div className='page-sign-header'>
-                <PageLogo />
+                <PageLogo/>
                 <h1>SORFACE</h1>
             </div>
             <FormWrapper>
