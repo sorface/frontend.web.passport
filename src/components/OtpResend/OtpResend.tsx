@@ -25,6 +25,7 @@ export const OtpResend: FunctionComponent<OtpResendProps> = () => {
                 </div>
             ) : (
                 <a
+                    href={undefined}
                     role='button'
                     className='otp-resend-button'
                     onClick={handleResend}
