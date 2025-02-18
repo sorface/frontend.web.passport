@@ -17,6 +17,7 @@ export const OtpResend: FunctionComponent<OtpResendProps> = () => {
         fetchData(undefined);
     };
 
+    // @ts-ignore
     return (
         <div className='otp-resend'>
             {loading ? (
@@ -24,12 +25,7 @@ export const OtpResend: FunctionComponent<OtpResendProps> = () => {
                     <Loader/>
                 </div>
             ) : (
-                <a
-                    href={undefined}
-                    role='button'
-                    className='otp-resend-button'
-                    onClick={handleResend}
-                >
+                <a role='button' className='otp-resend-button' onClick={handleResend}>
                     Resend
                 </a>
             )}
