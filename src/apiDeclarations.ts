@@ -1,9 +1,16 @@
-import { ApiContractDelete, ApiContractGet, ApiContractPatch, ApiContractPost, ApiContractPut, ApiEndpoint } from './types/apiContracts';
+import {
+    ApiContractDelete,
+    ApiContractGet,
+    ApiContractPatch,
+    ApiContractPost,
+    ApiContractPut,
+    ApiEndpoint
+} from './types/apiContracts';
 
 export interface SignInBody {
     username: string;
     password: string;
-};
+}
 
 export interface SignUpBody {
     email: string;
@@ -11,11 +18,11 @@ export interface SignUpBody {
     password: string;
     firstname: string;
     lastname: string;
-};
+}
 
 export interface SignUpResponse {
     otpExpiredTime: string;
-};
+}
 
 export interface ConfirmBody {
     code: string;
@@ -71,7 +78,7 @@ export const appsApiDeclaration = {
     edit: (body: EditAppBody): ApiContractPatch => ({
         method: 'PATCH',
         baseUrl: ApiEndpoint.GetAppById.replace(':id', body.id) as ApiEndpoint,
-        body: { ...body, id: undefined },
+        body: {...body, id: undefined},
     }),
     refresh: (params: RefreshAppParams): ApiContractPatch => ({
         method: 'PATCH',
@@ -127,7 +134,7 @@ export const accountsApiDeclaration = {
 
 export interface OtpResendResponse {
     otpExpiredTime: string;
-};
+}
 
 export const optApiDeclaration = {
     resend: (): ApiContractPut => ({

@@ -1,7 +1,7 @@
-import { useCallback, useReducer } from 'react';
-import { REACT_APP_BACKEND_URL } from '../config';
-import { ApiContract } from '../types/apiContracts';
-import { HttpCodes } from '../constants';
+import {useCallback, useReducer} from 'react';
+import {REACT_APP_BACKEND_URL} from '../config';
+import {ApiContract} from '../types/apiContracts';
+import {HttpCodes} from '../constants';
 
 export interface ApiMethodState<ResponseData = any> {
     process: {
@@ -109,7 +109,7 @@ const createFetchRequestInit = (apiContract: ApiContract): RequestInit => {
         return defaultRequestInit;
     }
 
-    const { body } = apiContract;
+    const {body} = apiContract;
 
     const headers = new Headers();
     headers.append("Content-Type", 'application/json;charset=UTF-8')
@@ -149,7 +149,7 @@ export const useApiMethod = <ResponseData, RequestData = AnyObject>(apiContractC
     const [apiMethodState, dispatch] = useReducer(apiMethodReducer, initialState);
 
     const fetchData = useCallback(async (requestData: RequestData, additionalUrlParams?: object) => {
-        dispatch({ name: 'startLoad' });
+        dispatch({name: 'startLoad'});
         const apiContract = apiContractCall(requestData);
         try {
             const response = await fetch(
@@ -169,7 +169,7 @@ export const useApiMethod = <ResponseData, RequestData = AnyObject>(apiContractC
                 const errorMessage = getResponseError(response, responseData, apiContract);
                 throw new Error(errorMessage);
             }
-            dispatch({ name: 'setData', payload: responseData });
+            dispatch({name: 'setData', payload: responseData});
         } catch (err: any) {
             dispatch({
                 name: 'setError',

@@ -11,9 +11,9 @@ const errorLocalization: Record<string, string> = {
 type FormFieldsProps = Pick<FormProps, 'fields' | 'fieldErrors'>;
 
 export const FormFields: FunctionComponent<FormFieldsProps> = ({
-    fields,
-    fieldErrors,
-}) => {
+                                                                   fields,
+                                                                   fieldErrors,
+                                                               }) => {
     return (
         <>
             {fields.map(field => (

@@ -1,12 +1,12 @@
-import { FunctionComponent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Captions, otpExpiredTimeLocalStorageKey, pathnames } from '../../constants';
-import { Field, Form } from '../../components/Form/Form';
-import { FormWrapper } from '../../components/Form/FormWrapper';
-import { ApiEndpoint } from '../../types/apiContracts';
-import { useApiMethodCsrf } from '../../hooks/useApiMethodCsrf';
-import { accountsApiDeclaration, SignUpBody, SignUpResponse } from '../../apiDeclarations';
-import { convertFormDataToObject } from '../../utils/convertFormDataToObject';
+import {FunctionComponent} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import {Captions, otpExpiredTimeLocalStorageKey, pathnames} from '../../constants';
+import {Field, Form} from '../../components/Form/Form';
+import {FormWrapper} from '../../components/Form/FormWrapper';
+import {ApiEndpoint} from '../../types/apiContracts';
+import {useApiMethodCsrf} from '../../hooks/useApiMethodCsrf';
+import {accountsApiDeclaration, SignUpBody, SignUpResponse} from '../../apiDeclarations';
+import {convertFormDataToObject} from '../../utils/convertFormDataToObject';
 
 import './SignUp.css';
 
@@ -43,8 +43,8 @@ const fields: Field[] = [
 
 export const SignUp: FunctionComponent = () => {
     const navigate = useNavigate();
-    const { apiMethodState, fetchData } = useApiMethodCsrf<SignUpResponse, SignUpBody>(accountsApiDeclaration.signup);
-    const { process: { error }, data } = apiMethodState;
+    const {apiMethodState, fetchData} = useApiMethodCsrf<SignUpResponse, SignUpBody>(accountsApiDeclaration.signup);
+    const {process: {error}, data} = apiMethodState;
 
     if (data) {
         localStorage.setItem(otpExpiredTimeLocalStorageKey, data.otpExpiredTime);

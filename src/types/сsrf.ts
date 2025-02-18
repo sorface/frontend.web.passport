@@ -1,4 +1,4 @@
 export interface CsrfToken {
-  parameterName: string;
-  token: string;
+    parameterName: string;
+    token: string;
 }

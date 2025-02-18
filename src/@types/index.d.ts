@@ -1,11 +1,11 @@
 export interface IonIconProps {
-  name: string;
+    name: string;
 }
 
 declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      ['ion-icon']: IonIconProps;
+    namespace JSX {
+        interface IntrinsicElements {
+            ['ion-icon']: IonIconProps;
+        }
     }
-  }
 }

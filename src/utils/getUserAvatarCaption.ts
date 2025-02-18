@@ -1,4 +1,4 @@
-import { Account } from '../types/account';
+import {Account} from '../types/account';
 
 export const getUserAvatarCaption = (account: Account | null): string | undefined => {
     if (account?.firstName && account?.lastName) {

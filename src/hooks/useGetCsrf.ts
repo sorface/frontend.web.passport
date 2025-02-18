@@ -1,6 +1,6 @@
 import {useCallback, useReducer} from "react";
 import {REACT_APP_BACKEND_URL} from "../config";
-import { CsrfToken } from "../types/сsrf";
+import {CsrfToken} from "../types/сsrf";
 
 interface CsrfConfigState {
     process: {
@@ -69,7 +69,7 @@ export const useCsrfApi = () => {
         try {
             const response = await fetch(
                 `${REACT_APP_BACKEND_URL}/api/csrf`,
-                { credentials: 'include' },
+                {credentials: 'include'},
             );
             if (!response.ok) {
                 throw new Error('UserApi error');
