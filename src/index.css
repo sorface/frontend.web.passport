@@ -97,6 +97,15 @@ button[disabled]:hover {
     border-color: var(--button-border-color);
 }
 
+button.text {
+    border: none;
+    padding: 0;
+    min-width: unset;
+    min-height: unset;
+    background-color: inherit;
+    font-size: inherit;
+}
+
 textarea,
 input[type="text"],
 input[type="color"] {
