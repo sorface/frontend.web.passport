@@ -102,7 +102,7 @@ const createFetchRequestInit = (apiContract: ApiContract): RequestInit => {
     const defaultRequestInit: RequestInit = {
         credentials: 'include',
         method: apiContract.method,
-        redirect: 'manual',
+        // redirect: 'manual',
     };
 
     if (apiContract.method === 'GET') {
